@@ -3,6 +3,9 @@ Arthur Martins Zimmermann
 Gabriel Jardim Nascimento
 """
 class Process:
+    """
+    Classe abstrata que representa um processo genérico.
+    """
     def __init__(self, pid: int):
         self._pid = pid
 

@@ -10,6 +10,9 @@ from readingProcess import ReadingProcess
 from writingProcess import WritingProcess
 
 class Pool:
+    """
+    Representa uma fila de processos.
+    """
     def __init__(self, queue: list[Process] = []):
         self._queue = queue
 

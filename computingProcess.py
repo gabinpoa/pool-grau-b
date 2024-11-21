@@ -28,15 +28,19 @@ class ComputingProcess(Process):
     def execute(self):
         match self._operator:
             case '+':
-                print(self._operands[0] + self._operands[1])
+                result = self._operands[0] + self._operands[1]
+                print(f'{self._operands[0]} + {self._operands[1]} = {result}')
             case '-':
-                print(self._operands[0] - self._operands[1])
+                result = self._operands[0] - self._operands[1]
+                print(f'{self._operands[0]} - {self._operands[1]} = {result}')
             case '*':
-                print(self._operands[0] * self._operands[1])
+                result = self._operands[0] * self._operands[1]
+                print(f'{self._operands[0]} * {self._operands[1]} = {result}')
             case '/':
-                print(self._operands[0] / self._operands[1])
+                result = self._operands[0] / self._operands[1]
+                print(f'{self._operands[0]} / {self._operands[1]} = {result:.4f}')
             case _:
-                print('Operador inválido')
+                print("Operador inválido")
 
     def __str__(self):
         return f'{super().pid} | ComputingProcess | {self.expression}'
