@@ -4,7 +4,12 @@ Gabriel Jardim Nascimento
 """
 from process import Process
 
+
 class ComputingProcess(Process):
+    """
+    recebe uma expressão matemática como entrada, identifica o operador e os operandos,
+    e executa a operação correspondente, exibindo o resultado.
+    """
 
     _possible_operators = ['+', '-', '*', '/']
 
@@ -19,7 +24,8 @@ class ComputingProcess(Process):
                 break
 
         # separa os operandos e guarda em self.operands como inteiros
-        self._operands: list[int] = [int(operand) for operand in expression.split(self._operator)]
+        self._operands: list[int] = [
+            int(operand) for operand in expression.split(self._operator)]
 
     @property
     def expression(self):
@@ -38,7 +44,8 @@ class ComputingProcess(Process):
                 print(f'{self._operands[0]} * {self._operands[1]} = {result}')
             case '/':
                 result = self._operands[0] / self._operands[1]
-                print(f'{self._operands[0]} / {self._operands[1]} = {result:.4f}')
+                print(
+                    f'{self._operands[0]} / {self._operands[1]} = {result:.4f}')
             case _:
                 print("Operador inválido")
 

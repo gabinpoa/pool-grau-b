@@ -1,9 +1,10 @@
 from pool import Pool
 import os
 
+
 class Menu:
     """
-    Classe que abstrai as ativides do menu do sistema.
+    Classe que abstrai as atividades do menu do sistema.
     Deve ser instanciada passando um objeto do tipo Pool.
     Para iniciar o menu, chame o método run().
     Exemplo:
@@ -11,6 +12,7 @@ class Menu:
     >>> menu = Menu(pool)
     >>> menu.run()
     """
+
     def __init__(self, pool: Pool):
         self._pool = pool
         pass
@@ -39,7 +41,8 @@ class Menu:
         Retorna o tipo de processo escolhido pelo usuário através do input.
         Se a opção não for válida, exibe uma mensagem de erro e pede novamente.
         """
-        process_types = ["ComputingProcess", "WritingProcess", "PrintingProcess", "ReadingProcess"]
+        process_types = ["ComputingProcess", "WritingProcess",
+                         "PrintingProcess", "ReadingProcess"]
         print("Tipos de processos disponíveis:")
         for i, process_type in enumerate(process_types):
             print(f"{i+1} - {process_type}")
@@ -50,12 +53,11 @@ class Menu:
             print("Tipo de processo inválido. Tente novamente.")
             return self.get_process_type()
 
-
     def exec_option(self, option: int):
         match option:
             case 1:
                 process_type: str = self.get_process_type()
-                
+
                 # Se o processo for de cálculo ou escrita, pede a expressão
                 if process_type in ["ComputingProcess", "WritingProcess"]:
                     expression = input("Digite a expressão do processo: ")
@@ -70,7 +72,8 @@ class Menu:
                 self._pool.run_next()
 
             case 3:
-                selected_pid = int(input("Insira o PID do processo que deseja executar: "))
+                selected_pid = int(
+                    input("Insira o PID do processo que deseja executar: "))
                 self._pool.run_process(selected_pid)
 
             case 4:
@@ -81,7 +84,7 @@ class Menu:
                 self._pool.load_state()
                 print("Estado carregado com sucesso de state.csv.")
 
-            case _: 
+            case _:
                 print("Opção inválida. Tente novamente.")
 
     def run(self):
@@ -103,5 +106,3 @@ class Menu:
             os.system('cls')
         else:
             os.system('clear')
-
-
