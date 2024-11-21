@@ -10,7 +10,7 @@ from readingProcess import ReadingProcess
 from writingProcess import WritingProcess
 
 class Pool:
-    def __init__(self, queue: list[Process]):
+    def __init__(self, queue: list[Process] = []):
         self._queue = queue
 
     def add_process(self, process: Process):
