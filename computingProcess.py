@@ -10,6 +10,7 @@ class ComputingProcess(Process):
 
     def __init__(self, pid: int, expression: str):
         super().__init__(pid)
+        self._expression = expression
 
         # identifica o operador e guarda em self.operator
         for operator in self._possible_operators:
@@ -20,6 +21,9 @@ class ComputingProcess(Process):
         # separa os operandos e guarda em self.operands como inteiros
         self._operands: list[int] = [int(operand) for operand in expression.split(self._operator)]
 
+    @property
+    def expression(self):
+        return self._expression
 
     def execute(self):
         match self._operator:
@@ -35,4 +39,4 @@ class ComputingProcess(Process):
                 print('Operador inválido')
 
     def __str__(self):
-        return f'{super().pid} | ComputingProcess | {self._operands[0]} {self._operator} {self._operands[1]}'
+        return f'{super().pid} | ComputingProcess | {self.expression}'

@@ -13,9 +13,13 @@ class WritingProcess(Process):
         super().__init__(pid)
         self._expression = expression
 
+    @property
+    def expression(self):
+        return self._expression
+
     def execute(self):
         with open('computation.txt', 'a') as f:
             f.writelines([self._expression])
 
     def __str__(self):
-        return f'{super().pid} | WritingProcess | {self._expression}'
+        return f'{super().pid} | WritingProcess | {self.expression}'
