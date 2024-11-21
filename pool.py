@@ -4,7 +4,6 @@ Gabriel Jardim Nascimento
 """
 import csv
 from computingProcess import ComputingProcess
-import computingProcess
 from printingProcess import PrintingProcess
 from process import Process
 from readingProcess import ReadingProcess
@@ -17,6 +16,34 @@ class Pool:
     def add_process(self, process: Process):
         """Adiciona um processo ao final da fila."""
         self._queue.append(process)
+
+    def new_process(self, process_type: str, expression: str | None = None):
+        """
+        Cria um novo processo do tipo especificado e o adiciona à fila.
+        """
+        pid = len(self._queue)
+
+        match process_type:
+            case "ComputingProcess":
+                if not expression:
+                    print("ComputingProcess requer uma expressão.")
+                    return
+                self.add_process(ComputingProcess(pid, expression))
+
+            case "WritingProcess":
+                if not expression:
+                    print("WritingProcess requer uma expressão.")
+                    return
+                self.add_process(WritingProcess(pid, expression))
+
+            case "PrintingProcess":
+                self.add_process(PrintingProcess(pid, self._queue))
+
+            case "ReadingProcess":
+                self.add_process(ReadingProcess(pid, self._queue))
+
+            case _:
+                print("Tipo de processo inválido: ", process_type)
 
     def run_next(self):
         """Remove e executa o próximo processo da fila."""
