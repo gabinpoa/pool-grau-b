@@ -33,3 +33,6 @@ class ComputingProcess(Process):
                 print(self._operands[0] / self._operands[1])
             case _:
                 print('Operador inválido')
+
+    def __str__(self):
+        return f'{super().pid} | ComputingProcess | {self._operands[0]} {self._operator} {self._operands[1]}'

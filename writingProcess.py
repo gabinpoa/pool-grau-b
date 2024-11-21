@@ -16,3 +16,6 @@ class WritingProcess(Process):
     def execute(self):
         with open('computation.txt', 'a') as f:
             f.writelines([self._expression])
+
+    def __str__(self):
+        return f'{super().pid} | WritingProcess | {self._expression}'

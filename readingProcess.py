@@ -18,3 +18,6 @@ class ReadingProcess(Process):
                 self._processes_pool.append(ComputingProcess(pid, expression))
             # Limpa o arquivo
             f.write('')
+
+    def __str__(self):
+        return f'{super().pid} | ReadingProcess'
