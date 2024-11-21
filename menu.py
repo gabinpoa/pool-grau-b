@@ -63,6 +63,7 @@ class Menu:
                 else:
                     self._pool.new_process(process_type)
 
+                self.clear_terminal()
                 print("Processo criado e adicionado à fila com sucesso.")
 
             case 2:
@@ -87,6 +88,7 @@ class Menu:
         while True:
             self.show_options()
             option = self.get_option()
+            self.clear_terminal()
             if option == 0:
                 print("Saindo...")
                 break
@@ -94,6 +96,7 @@ class Menu:
                 print("Apenas inteiros são aceitos. Tente novamente.")
             else:
                 self.exec_option(option)
+                print('')
 
     def clear_terminal(self):
         if os.name == 'nt':
