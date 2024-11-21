@@ -13,6 +13,10 @@ class Pool:
     def __init__(self, queue: list[Process] = []):
         self._queue = queue
 
+    @property
+    def queue(self):
+        return self._queue
+
     def add_process(self, process: Process):
         """Adiciona um processo ao final da fila."""
         self._queue.append(process)
