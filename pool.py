@@ -44,7 +44,7 @@ class Pool:
                 self.add_process(PrintingProcess(pid, self._queue))
 
             case "ReadingProcess":
-                self.add_process(ReadingProcess(pid, self._queue))
+                self.add_process(ReadingProcess(pid, self))
 
             case _:
                 print("Tipo de processo inválido: ", process_type)
